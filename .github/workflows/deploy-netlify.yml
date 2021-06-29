@@ -1,0 +1,30 @@
+name: Deploy Client on Netlify
+on:
+  push:
+    branches: [master] # run on pushes to master
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master # setup the repository in the runner
+      - name: Setup Node.js # setup Node.js in the runner
+        uses: actions/setup-node@master
+        with:
+          node-version: "14"
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+      - run: npm run install:client # install dependencies
+      - run: npm run build:client # build the project
+      # TODO: uncomment this line when tests are added to project
+      # - run: npm run test:client # run the tests
+      - run: npm run lint:client
+      # deploy site to netlify using secrets created on repository
+      - uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --prod
