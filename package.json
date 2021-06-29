@@ -1,17 +1,25 @@
 {
-  "name": "vue-assignment",
-  "version": "1.0.0",
-  "description": "![ ](https://imgs.xkcd.com/comics/code_quality_3.png)",
-  "main": "index.js",
-  "scripts": {
-    "start": "node src/server/app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "csv-parse": "^4.0.1",
-    "express": "^4.16.4",
-    "pug": "^2.0.3",
-    "ws": "^6.1.2"
-  }
+    "name": "vue-assignment",
+    "version": "1.0.0",
+    "description": "![ ](https://imgs.xkcd.com/comics/code_quality_3.png)",
+    "main": "index.js",
+    "scripts": {
+        "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+        "start:server": "node src/server/app.js",
+        "start:client": "cd src/client && npm run serve",
+        "install:server": "npm install",
+        "install:client": "cd src/client && npm install",
+        "build:client": "cd src/client && npm run build",
+        "test:client": "cd src/client && npm run test:unit",
+        "lint:client": "cd src/client && npm run lint"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^6.2.0",
+        "csv-parse": "^4.0.1",
+        "express": "^4.16.4",
+        "pug": "^2.0.3",
+        "ws": "^6.1.2"
+    }
 }
