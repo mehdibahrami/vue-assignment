@@ -1,14 +1,16 @@
 <template>
   <Header />
+  <Footer />
 </template>
 
 <script>
-import { Header } from "@/layouts";
+import { Header, Footer } from "@/layouts";
 
 export default {
   name: "App",
   components: {
     Header,
+    Footer,
   },
   data() {
     return {

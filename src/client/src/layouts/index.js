@@ -15,4 +15,9 @@ const VerticalNavbarMenu = defineAsyncComponent(() =>
   )
 );
 
-export { Header, HorizontalNavbarMenu, VerticalNavbarMenu };
+// Footer
+const Footer = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "footer" */ "./footer/Footer.vue")
+);
+
+export { Header, HorizontalNavbarMenu, VerticalNavbarMenu, Footer };
