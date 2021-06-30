@@ -1,10 +1,15 @@
 <template>
-  <div></div>
+  <Header />
 </template>
 
 <script>
+import { Header } from "@/layouts";
+
 export default {
   name: "App",
+  components: {
+    Header,
+  },
   data() {
     return {
       vehicleStatus: {
@@ -62,5 +67,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss"></style>
