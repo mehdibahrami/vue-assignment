@@ -1,0 +1,15 @@
+// Set html tag font family and line height
+html {
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+}
+
+// Improve consistency of default fonts in all browsers (https://github.com/sindresorhus/modern-normalize/issues/3)
+body {
+  font-family: $font-family-sans-serif;
+}
+
+// Set app height
+#app {
+  height: 100vh;
+}
