@@ -20,4 +20,9 @@ const Footer = defineAsyncComponent(() =>
   import(/* webpackChunkName: "footer" */ "./footer/Footer.vue")
 );
 
-export { Header, HorizontalNavbarMenu, VerticalNavbarMenu, Footer };
+// Dashboard
+const Dashboard = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "footer" */ "./pages/Dashboard.vue")
+);
+
+export { Header, HorizontalNavbarMenu, VerticalNavbarMenu, Footer, Dashboard };

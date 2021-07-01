@@ -1,15 +1,17 @@
 <template>
   <Header />
+  <Dashboard :data="vehicleStatus" />
   <Footer />
 </template>
 
 <script>
-import { Header, Footer } from "@/layouts";
+import { Header, Dashboard, Footer } from "@/layouts";
 
 export default {
   name: "App",
   components: {
     Header,
+    Dashboard,
     Footer,
   },
   data() {
