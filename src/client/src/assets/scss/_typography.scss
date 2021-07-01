@@ -5,6 +5,17 @@ body {
 
 // Set heading tags font size
 h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  margin: 0;
+  font-family: $font-family-sans-serif;
+  font-weight: inherit;
+}
+
+h1,
 .h1 {
   font-size: $h1-font-size;
 }
