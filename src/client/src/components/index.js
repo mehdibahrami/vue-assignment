@@ -10,4 +10,9 @@ const StatisticsCard = defineAsyncComponent(() =>
   import(/* webpackChunkName: "statistics-card" */ "./cards/StatisticsCard.vue")
 );
 
-export { Card, StatisticsCard };
+// Leaflet Map
+const LeafletMap = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "leaflet-map" */ "./maps/LeafletMap.vue")
+);
+
+export { Card, StatisticsCard, LeafletMap };
