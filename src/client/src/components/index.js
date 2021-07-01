@@ -5,4 +5,9 @@ const Card = defineAsyncComponent(() =>
   import(/* webpackChunkName: "card" */ "./Card.vue")
 );
 
-export { Card };
+// Statistics Card
+const StatisticsCard = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "statistics-card" */ "./StatisticsCard.vue")
+);
+
+export { Card, StatisticsCard };
