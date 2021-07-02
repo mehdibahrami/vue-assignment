@@ -16,7 +16,7 @@
 <script>
 import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
-import { SOC_MIDDLE_LEVEL, SOC_LOW_LEVEL } from "@/constants";
+import { MID_CHARGE, LOW_CHARGE } from "@/constants";
 import "leaflet/dist/leaflet.css";
 
 export default {
@@ -48,13 +48,13 @@ export default {
     markerIcon: function () {
       // Set default marker icon for when soc value is null or out of range
       let iconUrl = require("@/assets/img/marker-gray.png");
-      if (this.soc > SOC_MIDDLE_LEVEL) {
+      if (this.soc > MID_CHARGE) {
         // Marker icon for a situation where the vehicle charge is in the hgih range
         iconUrl = require("@/assets/img/marker-green.png");
-      } else if (this.soc < SOC_MIDDLE_LEVEL && this.soc > SOC_LOW_LEVEL) {
+      } else if (this.soc < MID_CHARGE && this.soc > LOW_CHARGE) {
         // Marker icon for a situation where the vehicle charge is in the medium range
         iconUrl = require("@/assets/img/marker-orange.png");
-      } else if (this.soc < SOC_MIDDLE_LEVEL && this.soc >= 0) {
+      } else if (this.soc < LOW_CHARGE && this.soc >= 0) {
         // Marker icon for a situation where the vehicle charge is in the low range
         iconUrl = require("@/assets/img/marker-red.png");
       }
