@@ -15,4 +15,9 @@ const LeafletMap = defineAsyncComponent(() =>
   import(/* webpackChunkName: "leaflet-map" */ "./maps/LeafletMap.vue")
 );
 
-export { Card, StatisticsCard, LeafletMap };
+// Gauge Chart
+const GaugeChart = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "gauge-chart" */ "./charts/GaugeChart.vue")
+);
+
+export { Card, StatisticsCard, LeafletMap, GaugeChart };
