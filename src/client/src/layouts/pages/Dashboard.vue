@@ -6,7 +6,11 @@
         <!-- Left column -->
         <div class="grid-cols-1">
           <Card :hasPadding="false">
-            <LeafletMap :lat="data.gps.lat" :lng="data.gps.lng" />
+            <LeafletMap
+              :lat="data.gps.lat"
+              :lng="data.gps.lng"
+              :soc="data.soc"
+            />
           </Card>
         </div>
         <!-- Right column -->

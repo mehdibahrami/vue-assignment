@@ -9,13 +9,14 @@
     <!-- Tile layer -->
     <l-tile-layer :url="tileUrl" />
     <!-- Marker -->
-    <l-marker :lat-lng="currentLocation" :icon="icon"></l-marker>
+    <l-marker :lat-lng="currentLocation" :icon="markerIcon"></l-marker>
   </l-map>
 </template>
 
 <script>
 import { latLng, icon } from "leaflet";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import { SOC_MIDDLE_LEVEL, SOC_LOW_LEVEL } from "@/constants";
 import "leaflet/dist/leaflet.css";
 
 export default {
@@ -28,16 +29,12 @@ export default {
   props: {
     lat: Number,
     lng: Number,
+    soc: Number,
   },
   data() {
     return {
       zoom: 15,
       tileUrl: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      icon: icon({
-        iconUrl: require("@/assets/img/marker.png"),
-        iconSize: [32, 46],
-        iconAnchor: [16, 46],
-      }),
       mapOptions: {
         scrollWheelZoom: false,
       },
@@ -47,6 +44,25 @@ export default {
     currentLocation: function () {
       // Update current location when received a new location props
       return latLng(this.lat, this.lng);
+    },
+    markerIcon: function () {
+      // Set default marker icon for when soc value is null or out of range
+      let iconUrl = require("@/assets/img/marker-gray.png");
+      if (this.soc > SOC_MIDDLE_LEVEL) {
+        // Marker icon for a situation where the vehicle charge is in the hgih range
+        iconUrl = require("@/assets/img/marker-green.png");
+      } else if (this.soc < SOC_MIDDLE_LEVEL && this.soc > SOC_LOW_LEVEL) {
+        // Marker icon for a situation where the vehicle charge is in the medium range
+        iconUrl = require("@/assets/img/marker-orange.png");
+      } else if (this.soc < SOC_MIDDLE_LEVEL && this.soc >= 0) {
+        // Marker icon for a situation where the vehicle charge is in the low range
+        iconUrl = require("@/assets/img/marker-red.png");
+      }
+      return icon({
+        iconUrl: iconUrl,
+        iconSize: [32, 46],
+        iconAnchor: [16, 46],
+      });
     },
   },
 };
