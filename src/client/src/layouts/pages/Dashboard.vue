@@ -34,6 +34,13 @@
               />
             </Card>
           </div>
+          <!-- Column grid -->
+          <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2">
+            <!-- Left column - Energy -->
+            <StatisticsCard title="Energy" :statistic="data.energy" unit="kW" />
+            <!-- Right column - Odometer -->
+            <StatisticsCard title="Odometer" :statistic="data.odo" unit="km" />
+          </div>
         </div>
       </div>
     </div>
@@ -41,7 +48,7 @@
 </template>
 
 <script>
-import { Card, LeafletMap, GaugeChart } from "@/components";
+import { Card, LeafletMap, GaugeChart, StatisticsCard } from "@/components";
 import { MID_CHARGE, LOW_CHARGE, SPEED_LIMIT } from "@/constants";
 
 export default {
@@ -50,6 +57,7 @@ export default {
     Card,
     LeafletMap,
     GaugeChart,
+    StatisticsCard,
   },
   props: {
     data: Object,
