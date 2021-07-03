@@ -17,7 +17,7 @@
         <div class="grid-cols-1">
           <!-- Column grid -->
           <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2">
-            <!-- Left column - Speed -->
+            <!-- Left column - Speed gauge chart -->
             <Card title="Speed">
               <GaugeChart
                 :data="data.speed"
@@ -38,15 +38,35 @@
           </div>
         </div>
       </div>
+      <!-- Column grid -->
+      <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin">
+        <!-- Left column - Speed line chart -->
+        <Card title="Speed (km/h)">
+          <LineChart
+            title="Speed"
+            :data="{ x: data.time, y: data.speed }"
+            :options="speedLineChartOptions"
+            :interval="speedLineChartInterval"
+          />
+        </Card>
+      </div>
     </div>
   </main>
 </template>
 
 <script>
-import { Card, LeafletMap, GaugeChart, StatisticsCard } from "@/components";
+import {
+  Card,
+  LeafletMap,
+  GaugeChart,
+  StatisticsCard,
+  LineChart,
+} from "@/components";
+import { SPEED_LINE_CHART_INTERVAL } from "@/constants";
 import {
   speedGaugeChartOptions,
   socGaugeChartOptions,
+  speedLineChartOptions,
 } from "@/components/charts/chartsOptions.js";
 
 export default {
@@ -56,6 +76,7 @@ export default {
     LeafletMap,
     GaugeChart,
     StatisticsCard,
+    LineChart,
   },
   props: {
     data: Object,
@@ -64,6 +85,8 @@ export default {
     return {
       speedGaugeChartOptions,
       socGaugeChartOptions,
+      speedLineChartOptions,
+      speedLineChartInterval: SPEED_LINE_CHART_INTERVAL,
     };
   },
 };

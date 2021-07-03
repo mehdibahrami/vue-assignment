@@ -20,6 +20,10 @@ body {
   gap: 0.75rem;
 }
 
+.grid-top-margin {
+  margin-top: 1rem;
+}
+
 @media (min-width: 640px) {
   .grid-sm-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));

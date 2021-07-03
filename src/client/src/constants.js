@@ -8,3 +8,5 @@ export const LOW_CHARGE = 30;
 export const MAX_SPEED = 100;
 // Maximum allowed speed
 export const SPEED_LIMIT = 50;
+// Speed line chart interval
+export const SPEED_LINE_CHART_INTERVAL = 500;
