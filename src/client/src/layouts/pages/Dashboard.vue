@@ -21,17 +21,12 @@
             <Card title="Speed">
               <GaugeChart
                 :data="data.speed"
-                :colors="speedGaugeChartColors"
-                label="km/h"
+                :options="speedGaugeChartOptions"
               />
             </Card>
             <!-- Right column - SoC -->
             <Card title="State of Charge">
-              <GaugeChart
-                :data="data.soc"
-                :colors="socGaugeChartColors"
-                label="%"
-              />
+              <GaugeChart :data="data.soc" :options="socGaugeChartOptions" />
             </Card>
           </div>
           <!-- Column grid -->
@@ -49,7 +44,10 @@
 
 <script>
 import { Card, LeafletMap, GaugeChart, StatisticsCard } from "@/components";
-import { MID_CHARGE, LOW_CHARGE, SPEED_LIMIT } from "@/constants";
+import {
+  speedGaugeChartOptions,
+  socGaugeChartOptions,
+} from "@/components/charts/chartsOptions.js";
 
 export default {
   name: "Dashboard",
@@ -62,33 +60,11 @@ export default {
   props: {
     data: Object,
   },
-  computed: {
-    speedGaugeChartColors: function () {
-      // Set speed guage chart color based on speed value
-      return [
-        function ({ value }) {
-          if (value <= SPEED_LIMIT) {
-            return "#7ca363";
-          } else {
-            return "#AD6D6D";
-          }
-        },
-      ];
-    },
-    socGaugeChartColors: function () {
-      // Set soc guage chart color based on soc value
-      return [
-        function ({ value }) {
-          if (value <= LOW_CHARGE) {
-            return "#AD6D6D";
-          } else if (value > LOW_CHARGE && value <= MID_CHARGE) {
-            return "#C38540";
-          } else {
-            return "#7ca363";
-          }
-        },
-      ];
-    },
+  data() {
+    return {
+      speedGaugeChartOptions,
+      socGaugeChartOptions,
+    };
   },
 };
 </script>
