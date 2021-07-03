@@ -50,6 +50,17 @@
             :setColor="setSpeedLineChartColor"
           />
         </Card>
+        <!-- Right column - SoC line chart -->
+        <Card title="State of Charge (%)">
+          <LineChart
+            type="area"
+            title="Speed"
+            :data="{ x: data.time, y: data.soc }"
+            :options="socLineChartOptions"
+            :interval="speedLineChartInterval"
+            :setColor="setSocLineChartColor"
+          />
+        </Card>
       </div>
     </div>
   </main>
@@ -63,12 +74,17 @@ import {
   StatisticsCard,
   LineChart,
 } from "@/components";
-import { SPEED_LINE_CHART_INTERVAL } from "@/constants";
+import {
+  SPEED_LINE_CHART_INTERVAL,
+  SOC_LINE_CHART_INTERVAL,
+} from "@/constants";
 import {
   speedGaugeChartOptions,
   socGaugeChartOptions,
   speedLineChartOptions,
   setSpeedLineChartColor,
+  socLineChartOptions,
+  setSocLineChartColor,
 } from "@/components/charts/chartsOptions.js";
 
 export default {
@@ -89,7 +105,10 @@ export default {
       socGaugeChartOptions,
       speedLineChartOptions,
       setSpeedLineChartColor,
+      socLineChartOptions,
+      setSocLineChartColor,
       speedLineChartInterval: SPEED_LINE_CHART_INTERVAL,
+      socLineChartInterval: SOC_LINE_CHART_INTERVAL,
     };
   },
 };

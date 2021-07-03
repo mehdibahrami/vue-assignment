@@ -2,10 +2,13 @@ import {
   SPEED_LIMIT,
   LOW_CHARGE,
   MID_CHARGE,
+  MAX_CHARGE,
+  MIN_CHARGE,
   MAX_SPEED,
   MIN_SPEED,
 } from "@/constants";
 
+// Default gauge chart options
 const defaultGaugeChart = {
   plotOptions: {
     radialBar: {
@@ -42,6 +45,7 @@ const defaultGaugeChart = {
   },
 };
 
+// Speed gauge chart options
 export const speedGaugeChartOptions = {
   ...defaultGaugeChart,
   fill: {
@@ -59,6 +63,7 @@ export const speedGaugeChartOptions = {
   labels: ["km/h"],
 };
 
+// SoC gauge chart options
 export const socGaugeChartOptions = {
   ...defaultGaugeChart,
   fill: {
@@ -78,6 +83,7 @@ export const socGaugeChartOptions = {
   labels: ["%"],
 };
 
+// Default line chart options
 const defaultLineChart = {
   dataLabels: {
     enabled: false,
@@ -87,6 +93,7 @@ const defaultLineChart = {
   },
 };
 
+// Speed line chart options
 export const speedLineChartOptions = {
   ...defaultLineChart,
   chart: {
@@ -148,11 +155,96 @@ export const speedLineChartOptions = {
   },
 };
 
+// Speed line chart set color function
 export function setSpeedLineChartColor() {
   if (this.data.y) {
     if (this.data.y <= SPEED_LIMIT) {
       this.$refs.chart.updateOptions({
         colors: ["#7ca363"],
+      });
+    } else {
+      this.$refs.chart.updateOptions({
+        colors: ["#AD6D6D"],
+      });
+    }
+  }
+}
+
+// SoC line chart options
+export const socLineChartOptions = {
+  ...defaultLineChart,
+  chart: {
+    id: "realtime",
+    type: "area",
+    zoom: {
+      enabled: false,
+    },
+    toolbar: {
+      show: false,
+    },
+    animations: {
+      enabled: true,
+      speed: 100,
+      easing: "linear",
+      dynamicAnimation: {
+        enabled: true,
+        speed: 500,
+      },
+    },
+  },
+  colors: ["#7ca363"],
+  xaxis: {
+    tickAmount: 5,
+    range: 100000,
+    labels: {
+      formatter: function (val, timestamp) {
+        return new Date(timestamp).toLocaleTimeString([], {
+          hour12: false,
+        });
+      },
+      offsetX: -15,
+    },
+  },
+  yaxis: {
+    min: MIN_CHARGE,
+    max: MAX_CHARGE,
+    tickAmount: 5,
+    opposite: true,
+    labels: {
+      offsetX: -10,
+      formatter: (value) => {
+        return parseInt(value);
+      },
+    },
+  },
+  tooltip: {
+    x: {
+      show: true,
+      formatter: function (val) {
+        return new Date(val).toLocaleTimeString([], {
+          hour12: false,
+        });
+      },
+    },
+    y: {
+      formatter: function (value) {
+        return value + " %";
+      },
+      title: "SoC",
+    },
+  },
+};
+
+// SoC line chart set color function
+export function setSocLineChartColor() {
+  if (this.data.y) {
+    if (this.data.y >= MID_CHARGE) {
+      this.$refs.chart.updateOptions({
+        colors: ["#7ca363"],
+      });
+    } else if (this.data.y < MID_CHARGE && this.data.y >= LOW_CHARGE) {
+      this.$refs.chart.updateOptions({
+        colors: ["#C38540"],
       });
     } else {
       this.$refs.chart.updateOptions({
