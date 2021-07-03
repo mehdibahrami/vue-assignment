@@ -23,7 +23,7 @@ export default {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 1.5rem 1rem 1.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   overflow: hidden;
 }
 
@@ -31,19 +31,5 @@ export default {
   text-align: center;
   font-size: $font-size-base;
   color: $gray;
-}
-
-@media (min-width: 640px) {
-  .footer {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .footer {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 </style>

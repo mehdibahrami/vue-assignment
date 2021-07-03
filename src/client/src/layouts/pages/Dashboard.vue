@@ -78,7 +78,7 @@ export default {
   max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
