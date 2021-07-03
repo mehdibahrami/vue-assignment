@@ -20,4 +20,9 @@ const GaugeChart = defineAsyncComponent(() =>
   import(/* webpackChunkName: "gauge-chart" */ "./charts/GaugeChart.vue")
 );
 
-export { Card, StatisticsCard, LeafletMap, GaugeChart };
+// Line Chart
+const LineChart = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "line-chart" */ "./charts/LineChart.vue")
+);
+
+export { Card, StatisticsCard, LeafletMap, GaugeChart, LineChart };

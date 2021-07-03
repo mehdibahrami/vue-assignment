@@ -71,3 +71,73 @@ export const socGaugeChartOptions = {
   },
   labels: ["%"],
 };
+
+const defaultLineChart = {
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+};
+
+export const speedLineChartOptions = {
+  ...defaultLineChart,
+  chart: {
+    id: "realtime",
+    type: "line",
+    zoom: {
+      enabled: false,
+    },
+    toolbar: {
+      show: false,
+    },
+    animations: {
+      enabled: true,
+      speed: 100,
+      easing: "linear",
+      dynamicAnimation: {
+        enabled: true,
+        speed: 500,
+      },
+    },
+  },
+  colors: ["#8a63a3"],
+  xaxis: {
+    tickAmount: 5,
+    range: 100000,
+    labels: {
+      formatter: function (val, timestamp) {
+        return new Date(timestamp).toLocaleTimeString([], {
+          hour12: false,
+        });
+      },
+      offsetX: -15,
+    },
+  },
+  yaxis: {
+    min: 0,
+    max: 100,
+    tickAmount: 5,
+    opposite: true,
+    labels: {
+      offsetX: -10,
+    },
+  },
+  tooltip: {
+    x: {
+      show: true,
+      formatter: function (val) {
+        return new Date(val).toLocaleTimeString([], {
+          hour12: false,
+        });
+      },
+    },
+    y: {
+      formatter: function (value) {
+        return value + " km/h";
+      },
+      title: "Speed",
+    },
+  },
+};
