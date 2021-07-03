@@ -36,6 +36,9 @@ export default {
       type: String,
       default: "line",
     },
+    setColor: {
+      type: Function,
+    },
   },
   data() {
     return {
@@ -71,6 +74,9 @@ export default {
           // Push the new data to series array and update chart
           this.series[0].data.push([this.data.x, this.data.y]);
           this.updateChart();
+
+          // Set chart color based on current value
+          if (this.setColor) this.setColor();
         }
       }, this.interval);
     },

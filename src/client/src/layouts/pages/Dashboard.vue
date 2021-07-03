@@ -47,6 +47,7 @@
             :data="{ x: data.time, y: data.speed }"
             :options="speedLineChartOptions"
             :interval="speedLineChartInterval"
+            :setColor="setSpeedLineChartColor"
           />
         </Card>
       </div>
@@ -67,6 +68,7 @@ import {
   speedGaugeChartOptions,
   socGaugeChartOptions,
   speedLineChartOptions,
+  setSpeedLineChartColor,
 } from "@/components/charts/chartsOptions.js";
 
 export default {
@@ -86,6 +88,7 @@ export default {
       speedGaugeChartOptions,
       socGaugeChartOptions,
       speedLineChartOptions,
+      setSpeedLineChartColor,
       speedLineChartInterval: SPEED_LINE_CHART_INTERVAL,
     };
   },

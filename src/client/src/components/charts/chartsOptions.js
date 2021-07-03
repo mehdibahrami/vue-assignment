@@ -1,4 +1,10 @@
-import { SPEED_LIMIT, LOW_CHARGE, MID_CHARGE } from "@/constants";
+import {
+  SPEED_LIMIT,
+  LOW_CHARGE,
+  MID_CHARGE,
+  MAX_SPEED,
+  MIN_SPEED,
+} from "@/constants";
 
 const defaultGaugeChart = {
   plotOptions: {
@@ -102,7 +108,7 @@ export const speedLineChartOptions = {
       },
     },
   },
-  colors: ["#8a63a3"],
+  colors: ["#7ca363"],
   xaxis: {
     tickAmount: 5,
     range: 100000,
@@ -116,8 +122,8 @@ export const speedLineChartOptions = {
     },
   },
   yaxis: {
-    min: 0,
-    max: 100,
+    min: MIN_SPEED,
+    max: MAX_SPEED,
     tickAmount: 5,
     opposite: true,
     labels: {
@@ -141,3 +147,17 @@ export const speedLineChartOptions = {
     },
   },
 };
+
+export function setSpeedLineChartColor() {
+  if (this.data.y) {
+    if (this.data.y <= SPEED_LIMIT) {
+      this.$refs.chart.updateOptions({
+        colors: ["#7ca363"],
+      });
+    } else {
+      this.$refs.chart.updateOptions({
+        colors: ["#AD6D6D"],
+      });
+    }
+  }
+}
