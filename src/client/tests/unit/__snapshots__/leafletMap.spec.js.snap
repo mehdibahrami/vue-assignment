@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LeafletMap renders correctly 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <!-- Leaflet map -->
+  <l-map-stub
+    center="LatLng(52.093449, 5.117378)"
+    class="map"
+    crs="EPSG3857"
+    noblockinganimations="false"
+    options="[object Object]"
+    usegloballeaflet="false"
+    worldcopyjump="false"
+    zoom="15"
+  >
+    <!-- Tile layer -->
+    <l-tile-layer-stub
+      detectretina="false"
+      minzoom="0"
+      nowrap="false"
+      opacity="1"
+      options="[object Object]"
+      pane="tilePane"
+      subdomains="abc"
+      tilesize="256"
+      tms="false"
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      visible="true"
+      zindex="1"
+    />
+    <!-- Marker -->
+    <l-marker-stub
+      draggable="false"
+      icon="[object Object]"
+      latlng="LatLng(52.093449, 5.117378)"
+      options="[object Object]"
+      pane="markerPane"
+      visible="true"
+    />
+  </l-map-stub>
+  
+</div>
+`;

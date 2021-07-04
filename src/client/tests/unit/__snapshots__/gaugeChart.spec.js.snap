@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GaugeChart renders correctly 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <!-- Apex Gauge Chart -->
+  <div
+    class="vue-apexcharts"
+  />
+  
+</div>
+`;
