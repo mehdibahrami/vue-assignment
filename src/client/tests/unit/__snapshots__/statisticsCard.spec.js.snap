@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatisticsCard renders correctly 1`] = `
+<div
+  class="card-body"
+  haspadding="true"
+  title="Energy"
+>
+  
+  <!-- Statistic -->
+  <div
+    class="statistic"
+  >
+    53.2
+    <!-- Statistic unit -->
+    <span
+      class="statistic-unit"
+    >
+      kW
+    </span>
+  </div>
+  
+</div>
+`;

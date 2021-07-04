@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard renders correctly 1`] = `
+<main
+  class="main"
+>
+  <div
+    class="container"
+  >
+    <!-- Column grid -->
+    <div
+      class="grid-cols-1 grid-lg-cols-2"
+    >
+      <!-- Left column -->
+      <div
+        class="grid-cols-1"
+      >
+        <div
+          class="card-body"
+          haspadding="false"
+        >
+          
+          <leaflet-map-stub
+            lat="52.093448638916016"
+            lng="5.117378234863281"
+            soc="72.8"
+          />
+          
+        </div>
+      </div>
+      <!-- Right column -->
+      <div
+        class="grid-cols-1"
+      >
+        <!-- Column grid -->
+        <div
+          class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2"
+        >
+          <!-- Left column - Speed gauge chart -->
+          <div
+            class="card-body"
+            title="Speed"
+          >
+            
+            <gauge-chart-stub
+              data="4"
+              options="[object Object]"
+            />
+            
+          </div>
+          <!-- Right column - SoC -->
+          <div
+            class="card-body"
+            title="State of Charge"
+          >
+            
+            <gauge-chart-stub
+              data="72.8"
+              options="[object Object]"
+            />
+            
+          </div>
+        </div>
+        <!-- Column grid -->
+        <div
+          class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2"
+        >
+          <!-- Left column - Energy -->
+          <statistics-card-stub
+            statistic="53.2"
+            title="Energy"
+            unit="kW"
+          />
+          <!-- Right column - Odometer -->
+          <statistics-card-stub
+            statistic="88526.414"
+            title="Odometer"
+            unit="km"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Column grid -->
+    <div
+      class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin"
+    >
+      <!-- Left column - Speed line chart -->
+      <div
+        class="card-body"
+        title="Speed (km/h)"
+      >
+        
+        <line-chart-stub
+          data="[object Object]"
+          interval="500"
+          options="[object Object]"
+          setcolor="function setSpeedLineChartColor() {
+  if (this.data.y) {
+    if (this.data.y <= _constants.SPEED_LIMIT) {
+      this.$refs.chart.updateOptions({
+        colors: [\\"#7ca363\\"]
+      });
+    } else {
+      this.$refs.chart.updateOptions({
+        colors: [\\"#AD6D6D\\"]
+      });
+    }
+  }
+}"
+          title="Speed"
+        />
+        
+      </div>
+      <!-- Right column - SoC line chart -->
+      <div
+        class="card-body"
+        title="State of Charge (%)"
+      >
+        
+        <line-chart-stub
+          data="[object Object]"
+          interval="500"
+          options="[object Object]"
+          setcolor="function setSocLineChartColor() {
+  if (this.data.y) {
+    if (this.data.y >= _constants.MID_CHARGE) {
+      this.$refs.chart.updateOptions({
+        colors: [\\"#7ca363\\"]
+      });
+    } else if (this.data.y < _constants.MID_CHARGE && this.data.y >= _constants.LOW_CHARGE) {
+      this.$refs.chart.updateOptions({
+        colors: [\\"#C38540\\"]
+      });
+    } else {
+      this.$refs.chart.updateOptions({
+        colors: [\\"#AD6D6D\\"]
+      });
+    }
+  }
+}"
+          title="Speed"
+          type="area"
+        />
+        
+      </div>
+    </div>
+  </div>
+</main>
+`;
