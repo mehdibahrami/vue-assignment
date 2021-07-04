@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HorizontalNavbarMenu renders correctly 1`] = `
+<div
+  class="navbar-horizontal-menu"
+>
+  <!-- Menu Items -->
+  
+  <div
+    class="navbar-horizontal-items"
+  >
+    <a
+      class="navbar-horizontal-selected-button"
+      href="/"
+    >
+      Dashboard
+    </a>
+  </div>
+  
+</div>
+`;

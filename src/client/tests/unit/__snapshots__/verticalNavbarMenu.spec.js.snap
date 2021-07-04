@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalNavbarMenu renders correctly 1`] = `
+<div
+  class="navbar-vertical-menu"
+>
+  <!-- Menu Items -->
+  
+  <div
+    class="navbar-vertical-items"
+  >
+    <a
+      class="navbar-vertical-selected-button"
+      href="/"
+    >
+      Dashboard
+    </a>
+  </div>
+  
+</div>
+`;

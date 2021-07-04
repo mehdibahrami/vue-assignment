@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<header>
+  <!-- Navbar -->
+  <nav
+    class="navbar"
+  >
+    <div
+      class="inner-navbar"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="main-menu"
+        >
+          <!-- Logo -->
+          <img
+            alt="ViriCiti"
+            class="logo"
+            src=""
+          />
+          <!-- Horizontal navbar menu -->
+          <horizontal-navbar-menu-stub
+            items="[object Object]"
+          />
+        </div>
+        <!-- Mobile menu -->
+        <div
+          class="mobile-menu"
+        >
+          <!-- Mobile menu button -->
+          <button
+            class="mobile-menu-button"
+            type="button"
+          >
+            <img
+              class="mobile-menu-icon"
+              src=""
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Vertical navbar menu -->
+    <vertical-navbar-menu-stub
+      isopen="false"
+      items="[object Object]"
+    />
+  </nav>
+</header>
+`;
