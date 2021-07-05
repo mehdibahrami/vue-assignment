@@ -140,8 +140,8 @@ export default {
         odometerStatisticsCard: "Odometer",
         speedLineChart: "Speed (km/h)",
         socLineChart: "State of Charge (%)",
-        speedViolationsCard: "Last Speed Violations",
-        restrictedAreasCard: "Last Entry into Restricted Areas",
+        speedViolationsCard: "Last Three Speed Violations",
+        restrictedAreasCard: "Last Three Entry into Restricted Areas",
       },
       chartTitles: {
         speedLineChart: "Speed",

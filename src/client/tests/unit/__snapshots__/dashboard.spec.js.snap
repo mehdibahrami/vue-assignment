@@ -151,12 +151,12 @@ exports[`Dashboard renders correctly 1`] = `
       <!-- Left column - Speed Violations Card -->
       <violation-card-stub
         data="[object Object]"
-        title="Last Speed Violations"
+        title="Last Three Speed Violations"
       />
       <!-- Right column - Restricted Areas Card -->
       <violation-card-stub
         data="[object Object]"
-        title="Last Entry into Restricted Areas"
+        title="Last Three Entry into Restricted Areas"
       />
     </div>
   </div>

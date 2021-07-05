@@ -13,11 +13,14 @@ exports[`ViolationCard renders correctly 1`] = `
 >
   
   <!-- Violations -->
+  
+  <!-- Empty -->
   <div
     class="empty-box"
   >
     No Violation!
   </div>
+  
   
 </div>
 `;
