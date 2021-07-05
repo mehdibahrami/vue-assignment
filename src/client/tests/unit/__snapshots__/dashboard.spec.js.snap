@@ -48,7 +48,7 @@ exports[`Dashboard renders correctly 1`] = `
             />
             
           </div>
-          <!-- Right column - SoC -->
+          <!-- Right column - SoC gauge chart -->
           <div
             class="card-body"
             title="State of Charge"
@@ -138,7 +138,7 @@ exports[`Dashboard renders correctly 1`] = `
     }
   }
 }"
-          title="Speed"
+          title="SoC"
           type="area"
         />
         
