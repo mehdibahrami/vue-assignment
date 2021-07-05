@@ -18,6 +18,7 @@ A [Vue.js](https://www.npmjs.com/package/vue) based dashboard for ViriCiti Vue a
   - Fully Responsive Layout
   - Unit Tests
   - Organized Folder Structure
+  - CI/CD Pipeline to Automate Lint Code, Run Tests and Deploy to Netlify by using GitHub Actions
   - Real-time Data Updates with Websocket
 - Dashboard
   - Vehicle Real-time Location on Leaflet Map (Marker Color Changes According to the Vehicle's State of Charge)
