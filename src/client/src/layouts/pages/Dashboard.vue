@@ -18,14 +18,14 @@
           <!-- Column grid -->
           <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2">
             <!-- Left column - Speed gauge chart -->
-            <Card :title="constants.speedGaugeChart.cardTitle">
+            <Card :title="cardTitles.speedGaugeChart">
               <GaugeChart
                 :data="data.speed"
                 :options="speedGaugeChartOptions"
               />
             </Card>
             <!-- Right column - SoC gauge chart -->
-            <Card :title="constants.socGaugeChart.cardTitle">
+            <Card :title="cardTitles.socGaugeChart">
               <GaugeChart :data="data.soc" :options="socGaugeChartOptions" />
             </Card>
           </div>
@@ -33,15 +33,15 @@
           <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2">
             <!-- Left column - Energy -->
             <StatisticsCard
-              :title="constants.energyStatisticsCard.cardTitle"
+              :title="cardTitles.energyStatisticsCard"
               :statistic="data.energy"
-              :unit="constants.energyStatisticsCard.cardUnit"
+              :unit="cardUnits.energyStatisticsCard"
             />
             <!-- Right column - Odometer -->
             <StatisticsCard
-              :title="constants.odometerStatisticsCard.cardTitle"
+              :title="cardTitles.odometerStatisticsCard"
               :statistic="data.odo"
-              :unit="constants.odometerStatisticsCard.cardUnit"
+              :unit="cardUnits.odometerStatisticsCard"
             />
           </div>
         </div>
@@ -49,9 +49,9 @@
       <!-- Column grid -->
       <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin">
         <!-- Left column - Speed line chart -->
-        <Card :title="constants.speedLineChart.cardTitle">
+        <Card :title="cardTitles.speedLineChart">
           <LineChart
-            :title="constants.speedLineChart.chartTitle"
+            :title="chartTitles.speedLineChart"
             :data="{ x: data.time, y: data.speed }"
             :options="speedLineChartOptions"
             :interval="speedLineChartInterval"
@@ -59,16 +59,30 @@
           />
         </Card>
         <!-- Right column - SoC line chart -->
-        <Card :title="constants.socLineChart.cardTitle">
+        <Card :title="cardTitles.socLineChart">
           <LineChart
-            :type="constants.socLineChart.chartType"
-            :title="constants.socLineChart.chartTitle"
+            :type="chartTypes.socLineChart"
+            :title="chartTitles.socLineChart"
             :data="{ x: data.time, y: data.soc }"
             :options="socLineChartOptions"
             :interval="speedLineChartInterval"
             :setColor="setSocLineChartColor"
           />
         </Card>
+      </div>
+
+      <!-- Column grid -->
+      <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin">
+        <!-- Left column - Speed Violations Card -->
+        <ViolationCard
+          :title="cardTitles.speedViolationsCard"
+          :data="speedViolation"
+        />
+        <!-- Right column - Restricted Areas Card -->
+        <ViolationCard
+          :title="cardTitles.restrictedAreasCard"
+          :data="areaViolation"
+        />
       </div>
     </div>
   </main>
@@ -81,6 +95,7 @@ import {
   GaugeChart,
   StatisticsCard,
   LineChart,
+  ViolationCard,
 } from "@/components";
 import {
   SPEED_LINE_CHART_INTERVAL,
@@ -103,6 +118,7 @@ export default {
     GaugeChart,
     StatisticsCard,
     LineChart,
+    ViolationCard,
   },
   props: {
     data: Object,
@@ -117,32 +133,84 @@ export default {
       setSocLineChartColor,
       speedLineChartInterval: SPEED_LINE_CHART_INTERVAL,
       socLineChartInterval: SOC_LINE_CHART_INTERVAL,
-      constants: {
-        speedGaugeChart: {
-          cardTitle: "Speed",
-        },
-        socGaugeChart: {
-          cardTitle: "State of Charge",
-        },
-        energyStatisticsCard: {
-          cardTitle: "Energy",
-          cardUnit: "kW",
-        },
-        odometerStatisticsCard: {
-          cardTitle: "Odometer",
-          cardUnit: "km",
-        },
-        speedLineChart: {
-          cardTitle: "Speed (km/h)",
-          chartTitle: "Speed",
-        },
-        socLineChart: {
-          cardTitle: "State of Charge (%)",
-          chartTitle: "SoC",
-          chartType: "area",
-        },
+      cardTitles: {
+        speedGaugeChart: "Speed",
+        socGaugeChart: "State of Charge",
+        energyStatisticsCard: "Energy",
+        odometerStatisticsCard: "Odometer",
+        speedLineChart: "Speed (km/h)",
+        socLineChart: "State of Charge (%)",
+        speedViolationsCard: "Last Speed Violations",
+        restrictedAreasCard: "Last Entry into Restricted Areas",
+      },
+      chartTitles: {
+        speedLineChart: "Speed",
+        socLineChart: "SoC",
+      },
+      cardUnits: {
+        energyStatisticsCard: "kW",
+        odometerStatisticsCard: "km",
+      },
+      chartTypes: {
+        socLineChart: "area",
+      },
+      speedViolation: {
+        mainTitle: "",
+        badge: "",
+        leftTitle: "",
+        leftValue: "",
+        rightTitle: "",
+        rightValue: "",
+      },
+      areaViolation: {
+        mainTitle: "",
+        badge: "",
+        leftTitle: "",
+        leftValue: "",
+        rightTitle: "",
+        rightValue: "",
       },
     };
+  },
+  watch: {
+    data() {
+      // If this.data.violations is not null then push the value to variables
+      if (this.data.violations) {
+        this.data.violations.forEach((violation) => {
+          // If speed violation has value change this.speedViolation object values
+          if (violation.speed) {
+            this.speedViolation = {
+              mainTitle: violation.speed.title,
+              badge: new Date(this.data.time).toLocaleString([], {
+                hour12: false,
+              }),
+              leftTitle: "Speed",
+              leftValue: violation.speed.speed,
+              rightTitle: "Allowed Speed",
+              rightValue: violation.speed.allowed,
+            };
+          }
+          // If area violation has value change this.speedViolation object values
+          if (violation.area) {
+            this.areaViolation = {
+              mainTitle: violation.area.title,
+              badge: "Restricted",
+              leftTitle: "Entry",
+              leftValue: new Date(violation.area.entry).toLocaleTimeString([], {
+                hour12: false,
+              }),
+              rightTitle: "Departure",
+              rightValue: new Date(violation.area.departure).toLocaleTimeString(
+                [],
+                {
+                  hour12: false,
+                }
+              ),
+            };
+          }
+        });
+      }
+    },
   },
 };
 </script>

@@ -26,6 +26,7 @@ export default {
         odo: 0,
         speed: 0,
         soc: 0,
+        violations: [],
       },
     };
   },
@@ -66,6 +67,7 @@ export default {
         odo: parseFloat(jsonData.odo),
         speed: parseInt(jsonData.speed),
         soc: parseFloat(jsonData.soc),
+        violations: jsonData.violations,
       };
     },
   },
