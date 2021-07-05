@@ -132,14 +132,14 @@ class Broadcaster extends EventEmitter {
                                             };
                                         }
                                     } else {
-                                        // If the vehicle is no longer in the restricted area, and has been in the restricted area so far, record the time of departure
+                                        // If the vehicle is no longer in the restricted area, and has been in the restricted area so far, record the exit time
                                         if (
                                             Object.keys(restrictedArea).length >
                                             0
                                         ) {
                                             restrictedArea = {
                                                 ...restrictedArea,
-                                                departure: obj.time,
+                                                exit: obj.time,
                                             };
                                             // Push violation to status object
                                             obj.violations.push({

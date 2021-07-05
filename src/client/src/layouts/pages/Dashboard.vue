@@ -70,7 +70,6 @@
           />
         </Card>
       </div>
-
       <!-- Column grid -->
       <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin">
         <!-- Left column - Speed Violations Card -->
@@ -157,17 +156,17 @@ export default {
       speedViolation: {
         mainTitle: "",
         badge: "",
-        leftTitle: "",
-        leftValue: "",
-        rightTitle: "",
-        rightValue: "",
+        leftTitle: "Speed",
+        leftValue: 0,
+        rightTitle: "Allowed Speed",
+        rightValue: 0,
       },
       areaViolation: {
         mainTitle: "",
-        badge: "",
-        leftTitle: "",
+        badge: "Restricted",
+        leftTitle: "Entry",
         leftValue: "",
-        rightTitle: "",
+        rightTitle: "Exit",
         rightValue: "",
       },
     };
@@ -180,32 +179,28 @@ export default {
           // If speed violation has value change this.speedViolation object values
           if (violation.speed) {
             this.speedViolation = {
+              ...this.speedViolation,
               mainTitle: violation.speed.title,
-              badge: new Date(this.data.time).toLocaleString([], {
-                hour12: false,
-              }),
-              leftTitle: "Speed",
+              badge: new Date(this.data.time)
+                .toLocaleString([], {
+                  hour12: false,
+                })
+                .replace(",", ""),
               leftValue: violation.speed.speed,
-              rightTitle: "Allowed Speed",
               rightValue: violation.speed.allowed,
             };
           }
           // If area violation has value change this.speedViolation object values
           if (violation.area) {
             this.areaViolation = {
+              ...this.areaViolation,
               mainTitle: violation.area.title,
-              badge: "Restricted",
-              leftTitle: "Entry",
               leftValue: new Date(violation.area.entry).toLocaleTimeString([], {
                 hour12: false,
               }),
-              rightTitle: "Departure",
-              rightValue: new Date(violation.area.departure).toLocaleTimeString(
-                [],
-                {
-                  hour12: false,
-                }
-              ),
+              rightValue: new Date(violation.area.exit).toLocaleTimeString([], {
+                hour12: false,
+              }),
             };
           }
         });
