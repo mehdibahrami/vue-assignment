@@ -12,62 +12,60 @@ exports[`ViolationsCard renders correctly 1`] = `
     class="violations"
   >
     
-    <li>
+    <li
+      class="violation"
+    >
       <div
-        class="violation"
+        class="box-row"
       >
+        <!-- Violation Tilte -->
         <div
-          class="box-row"
+          class="main-title"
         >
-          <!-- Violation Tilte -->
-          <div
-            class="main-title"
+          Catharijnesingel
+        </div>
+        <!-- Violation Badge -->
+        <div
+          class="badge"
+        >
+          <span
+            class="badge-title"
           >
-            Catharijnesingel
+            11/23/2017, 15:14:17
+          </span>
+        </div>
+      </div>
+      <div
+        class="box-row box-row-margin"
+      >
+        <!-- Left Value -->
+        <div
+          class="value-box"
+        >
+          <div
+            class="value-box-title"
+          >
+            Speed:
           </div>
-          <!-- Violation Badge -->
           <div
-            class="badge"
+            class="value-box-margin"
           >
-            <span
-              class="badge-title"
-            >
-              11/23/2017, 15:14:17
-            </span>
+            52
           </div>
         </div>
+        <!-- Right Value -->
         <div
-          class="box-row box-row-margin"
+          class="value-box value-box-margin"
         >
-          <!-- Left Value -->
           <div
-            class="value-box"
+            class="value-box-title"
           >
-            <div
-              class="value-box-title"
-            >
-              Speed:
-            </div>
-            <div
-              class="value-box-margin"
-            >
-              52
-            </div>
+            Allowed Speed:
           </div>
-          <!-- Right Value -->
           <div
-            class="value-box value-box-margin"
+            class="value-box-margin"
           >
-            <div
-              class="value-box-title"
-            >
-              Allowed Speed:
-            </div>
-            <div
-              class="value-box-margin"
-            >
-              45
-            </div>
+            45
           </div>
         </div>
       </div>
