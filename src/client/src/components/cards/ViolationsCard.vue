@@ -5,31 +5,33 @@
       v-if="violations !== undefined && violations.length > 0"
       class="violations"
     >
-      <li v-for="(violation, index) in violations" :key="index">
-        <div class="violation">
-          <div class="box-row">
-            <!-- Violation Tilte -->
-            <div class="main-title">
-              {{ violation.mainTitle }}
-            </div>
-            <!-- Violation Badge -->
-            <div class="badge">
-              <span class="badge-title">
-                {{ violation.badge }}
-              </span>
-            </div>
+      <li
+        v-for="(violation, index) in violations"
+        :key="index"
+        class="violation"
+      >
+        <div class="box-row">
+          <!-- Violation Tilte -->
+          <div class="main-title">
+            {{ violation.mainTitle }}
           </div>
-          <div class="box-row box-row-margin">
-            <!-- Left Value -->
-            <div class="value-box">
-              <div class="value-box-title">{{ violation.leftTitle }}:</div>
-              <div class="value-box-margin">{{ violation.leftValue }}</div>
-            </div>
-            <!-- Right Value -->
-            <div class="value-box value-box-margin">
-              <div class="value-box-title">{{ violation.rightTitle }}:</div>
-              <div class="value-box-margin">{{ violation.rightValue }}</div>
-            </div>
+          <!-- Violation Badge -->
+          <div class="badge">
+            <span class="badge-title">
+              {{ violation.badge }}
+            </span>
+          </div>
+        </div>
+        <div class="box-row box-row-margin">
+          <!-- Left Value -->
+          <div class="value-box">
+            <div class="value-box-title">{{ violation.leftTitle }}:</div>
+            <div class="value-box-margin">{{ violation.leftValue }}</div>
+          </div>
+          <!-- Right Value -->
+          <div class="value-box value-box-margin">
+            <div class="value-box-title">{{ violation.rightTitle }}:</div>
+            <div class="value-box-margin">{{ violation.rightValue }}</div>
           </div>
         </div>
       </li>
@@ -88,9 +90,13 @@ ul {
 }
 
 .violation {
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  padding: 1rem 0 1rem 0;
   border-bottom-width: 1px;
   border-color: $gray-light;
+}
+
+.violation:last-child {
+  border-bottom-width: 0px;
 }
 
 .box-row {
