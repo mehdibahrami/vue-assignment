@@ -43,7 +43,7 @@
 import { Card } from "@/components";
 
 export default {
-  name: "ViolationCard",
+  name: "ViolationsCard",
   components: {
     Card,
   },

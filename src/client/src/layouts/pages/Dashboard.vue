@@ -74,12 +74,12 @@
       <!-- Column grid -->
       <div class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin">
         <!-- Left column - Speed Violations Card -->
-        <ViolationCard
+        <ViolationsCard
           :title="cardTitles.speedViolationsCard"
           :data="speedViolation"
         />
         <!-- Right column - Restricted Areas Card -->
-        <ViolationCard
+        <ViolationsCard
           :title="cardTitles.restrictedAreasCard"
           :data="areaViolation"
         />
@@ -95,7 +95,7 @@ import {
   GaugeChart,
   StatisticsCard,
   LineChart,
-  ViolationCard,
+  ViolationsCard,
 } from "@/components";
 import {
   SPEED_LINE_CHART_INTERVAL,
@@ -118,7 +118,7 @@ export default {
     GaugeChart,
     StatisticsCard,
     LineChart,
-    ViolationCard,
+    ViolationsCard,
   },
   props: {
     data: Object,

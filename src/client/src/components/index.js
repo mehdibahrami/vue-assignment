@@ -10,9 +10,9 @@ const StatisticsCard = defineAsyncComponent(() =>
   import(/* webpackChunkName: "statistics-card" */ "./cards/StatisticsCard.vue")
 );
 
-// Violation Card
-const ViolationCard = defineAsyncComponent(() =>
-  import(/* webpackChunkName: "violation-card" */ "./cards/ViolationCard.vue")
+// Violations Card
+const ViolationsCard = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "violations-card" */ "./cards/ViolationsCard.vue")
 );
 
 // Leaflet Map
@@ -36,5 +36,5 @@ export {
   LeafletMap,
   GaugeChart,
   LineChart,
-  ViolationCard,
+  ViolationsCard,
 };
