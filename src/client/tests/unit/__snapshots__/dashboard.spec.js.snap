@@ -149,12 +149,12 @@ exports[`Dashboard renders correctly 1`] = `
       class="grid-cols-1 grid-lg-cols-2 grid-sm-cols-2 grid-top-margin"
     >
       <!-- Left column - Speed Violations Card -->
-      <violation-card-stub
+      <violations-card-stub
         data="[object Object]"
         title="Last Three Speed Violations"
       />
       <!-- Right column - Restricted Areas Card -->
-      <violation-card-stub
+      <violations-card-stub
         data="[object Object]"
         title="Last Three Entry into Restricted Areas"
       />

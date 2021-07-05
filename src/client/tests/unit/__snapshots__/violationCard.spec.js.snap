@@ -1,26 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ViolationCard renders correctly 1`] = `
+exports[`ViolationsCard renders correctly 1`] = `
 <div
-  badge="11/23/2017, 15:14:17"
   class="card-body"
   haspadding="true"
-  lefttitle="Speed"
-  leftvalue="52"
-  maintitle="Catharijnesingel"
-  righttitle="Allowed Speed"
-  rightvalue="45"
+  title="Last Three Speed Violations"
 >
   
   <!-- Violations -->
-  
-  <!-- Empty -->
-  <div
-    class="empty-box"
+  <ul
+    class="violations"
   >
-    No Violation!
-  </div>
-  
+    
+    <li>
+      <div
+        class="violation"
+      >
+        <div
+          class="box-row"
+        >
+          <!-- Violation Tilte -->
+          <div
+            class="main-title"
+          >
+            Catharijnesingel
+          </div>
+          <!-- Violation Badge -->
+          <div
+            class="badge"
+          >
+            <span
+              class="badge-title"
+            >
+              11/23/2017, 15:14:17
+            </span>
+          </div>
+        </div>
+        <div
+          class="box-row box-row-margin"
+        >
+          <!-- Left Value -->
+          <div
+            class="value-box"
+          >
+            <div
+              class="value-box-title"
+            >
+              Speed:
+            </div>
+            <div
+              class="value-box-margin"
+            >
+              52
+            </div>
+          </div>
+          <!-- Right Value -->
+          <div
+            class="value-box value-box-margin"
+          >
+            <div
+              class="value-box-title"
+            >
+              Allowed Speed:
+            </div>
+            <div
+              class="value-box-margin"
+            >
+              45
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    
+  </ul>
   
 </div>
 `;
