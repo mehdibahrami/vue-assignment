@@ -27,6 +27,8 @@ A [Vue.js](https://www.npmjs.com/package/vue) based dashboard for ViriCiti Vue a
   - Odometer Info Card
   - Speed Line Chart (Chart Color Changes based on whether the Car Speed is Allowed or not)
   - SoC Line Chart (Line Color Changes According to the Vehicle's State of Charge)
+  - Last Three Speed Violations (Based on the Speed Limit Defined in each Bound)
+  - Last Three Entry into Restricted Areas (Based on the Defined Restricted Areas)
 
 ## 🚀 Getting Started
 
