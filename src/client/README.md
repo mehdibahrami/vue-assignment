@@ -4,7 +4,7 @@ A [Vue.js](https://www.npmjs.com/package/vue) based dashboard for ViriCiti Vue a
 
 <p align="center">
   <a href="https://viriciti.netlify.app" target="_blank">
-    <img src="https://user-images.githubusercontent.com/63710663/124396855-613d5200-dd21-11eb-8615-f838176cc9d3.png" width="700px">
+    <img src="https://user-images.githubusercontent.com/63710663/124472334-3d2a5100-ddb3-11eb-898d-270d53f05396.png" width="700px">
     <br>
     Live Demo
   </a>
