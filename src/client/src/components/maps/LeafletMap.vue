@@ -82,6 +82,8 @@ export default {
 <style scoped lang="scss">
 .map {
   min-height: 20rem;
+  // Fix chrome blurry map (https://github.com/Leaflet/Leaflet/issues/3297)
+  image-rendering: pixelated;
 }
 
 @media (min-width: 1024px) {
