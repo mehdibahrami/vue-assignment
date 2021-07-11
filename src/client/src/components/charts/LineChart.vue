@@ -46,24 +46,24 @@ export default {
     };
   },
   mounted() {
-    // If it is a realtime chart(interval props has value) update the data
+    // If it is a realtime chart(interval prop has value) update the data
     if (this.interval && this.interval > 0) {
       // Updates the data according to the interval time period
       this.setData();
 
-      // Reset data every 5 minutes to prevent memory leak (https://github.com/apexcharts/apexcharts.js/issues/605)
-      this.resetData();
+      // Free memory every 5 minutes to prevent memory leak (https://github.com/apexcharts/apexcharts.js/issues/605)
+      this.freeMemory();
     }
   },
   methods: {
     setData: function () {
       setInterval(() => {
-        // If the x and y values are not null then check other parameters for update chart series
+        // If x and y values are not null then check other parameters for update chart series
         if (this.data.x && this.data.y) {
           const dataLength = this.series[0].data.length;
 
           // If series contains at least one element then check new time value(this.data.x) should be greater than last time in the array
-          // If it is not we should reset the chart
+          // If it is not reset the chart
           if (dataLength > 1) {
             const lastData = this.series[0].data[dataLength - 1];
             if (lastData[0] > this.data.x) {
@@ -88,14 +88,14 @@ export default {
         },
       ]);
     },
-    resetData: function () {
+    freeMemory: function () {
       setInterval(() => {
         const dataLength = this.series[0].data.length;
 
-        // If series has more than 100 elements delete 70 of the oldest
-        if (dataLength > 100) {
+        // If series has more than 500 elements get the last 200 and delete others
+        if (dataLength > 500) {
           this.series[0].data = this.series[0].data.slice(
-            dataLength - 70,
+            dataLength - 200,
             dataLength
           );
 

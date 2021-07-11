@@ -11,7 +11,7 @@ exports[`Dashboard renders correctly 1`] = `
     <div
       class="grid-cols-1 grid-lg-cols-2"
     >
-      <!-- Left column -->
+      <!-- Left column - Map -->
       <div
         class="grid-cols-1"
       >
@@ -92,7 +92,7 @@ exports[`Dashboard renders correctly 1`] = `
         
         <line-chart-stub
           data="[object Object]"
-          interval="500"
+          interval="100"
           options="[object Object]"
           setcolor="function setSpeedLineChartColor() {
   if (this.data.y) {
@@ -119,7 +119,7 @@ exports[`Dashboard renders correctly 1`] = `
         
         <line-chart-stub
           data="[object Object]"
-          interval="500"
+          interval="100"
           options="[object Object]"
           setcolor="function setSocLineChartColor() {
   if (this.data.y) {

@@ -107,18 +107,18 @@ export const speedLineChartOptions = {
     },
     animations: {
       enabled: true,
-      speed: 100,
-      easing: "linear",
+      speed: 500,
+      easing: "easein",
       dynamicAnimation: {
         enabled: true,
-        speed: 500,
+        speed: 1000,
       },
     },
   },
   colors: ["#7ca363"],
   xaxis: {
     tickAmount: 5,
-    range: 100000,
+    range: 600000,
     labels: {
       formatter: function (val, timestamp) {
         return new Date(timestamp).toLocaleTimeString([], {
@@ -136,6 +136,10 @@ export const speedLineChartOptions = {
     labels: {
       offsetX: -10,
     },
+  },
+  stroke: {
+    curve: "smooth",
+    width: 4,
   },
   tooltip: {
     x: {
@@ -184,18 +188,18 @@ export const socLineChartOptions = {
     },
     animations: {
       enabled: true,
-      speed: 100,
+      speed: 500,
       easing: "linear",
       dynamicAnimation: {
         enabled: true,
-        speed: 500,
+        speed: 1000,
       },
     },
   },
   colors: ["#7ca363"],
   xaxis: {
     tickAmount: 5,
-    range: 100000,
+    range: 600000,
     labels: {
       formatter: function (val, timestamp) {
         return new Date(timestamp).toLocaleTimeString([], {
@@ -204,6 +208,9 @@ export const socLineChartOptions = {
       },
       offsetX: -15,
     },
+  },
+  stroke: {
+    width: 4,
   },
   yaxis: {
     min: MIN_CHARGE,
