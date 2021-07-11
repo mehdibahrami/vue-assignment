@@ -3,7 +3,7 @@
     <div class="container">
       <!-- Column grid -->
       <div class="grid-cols-1 grid-lg-cols-2">
-        <!-- Left column -->
+        <!-- Left column - Map -->
         <div class="grid-cols-1">
           <Card :hasPadding="false">
             <LeafletMap
@@ -190,7 +190,7 @@ export default {
               rightValue: violation.speed.allowed,
             };
           }
-          // If area violation has value change this.speedViolation object values
+          // If area violation has value change this.areaViolation object values
           if (violation.area) {
             this.areaViolation = {
               ...this.areaViolation,

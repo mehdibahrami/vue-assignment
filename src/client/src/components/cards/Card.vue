@@ -28,7 +28,7 @@ export default {
     cardClasses: function () {
       let classes = "card";
 
-      // Set card classes based on hasPadding props
+      // Set card classes based on hasPadding prop
       if (this.hasPadding === true) {
         classes += ` card-padding`;
       }
