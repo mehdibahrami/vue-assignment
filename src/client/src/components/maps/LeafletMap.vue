@@ -27,9 +27,17 @@ export default {
     LMarker,
   },
   props: {
-    lat: Number,
-    lng: Number,
-    soc: Number,
+    lat: {
+      type: Number,
+      require: true,
+    },
+    lng: {
+      type: Number,
+      require: true,
+    },
+    soc: {
+      type: Number,
+    },
   },
   data() {
     return {
@@ -48,15 +56,18 @@ export default {
     markerIcon: function () {
       // Set default marker icon for when soc value is null or out of range
       let iconUrl = require("@/assets/img/marker-gray.png");
-      if (this.soc > MID_CHARGE) {
-        // Marker icon for a situation where the vehicle charge is in the hgih range
-        iconUrl = require("@/assets/img/marker-green.png");
-      } else if (this.soc < MID_CHARGE && this.soc > LOW_CHARGE) {
-        // Marker icon for a situation where the vehicle charge is in the medium range
-        iconUrl = require("@/assets/img/marker-orange.png");
-      } else if (this.soc < LOW_CHARGE && this.soc >= 0) {
-        // Marker icon for a situation where the vehicle charge is in the low range
-        iconUrl = require("@/assets/img/marker-red.png");
+      // If SoC value is not null
+      if (this.soc) {
+        if (this.soc > MID_CHARGE) {
+          // Marker icon for a situation where the vehicle charge is in the hgih range
+          iconUrl = require("@/assets/img/marker-green.png");
+        } else if (this.soc < MID_CHARGE && this.soc > LOW_CHARGE) {
+          // Marker icon for a situation where the vehicle charge is in the medium range
+          iconUrl = require("@/assets/img/marker-orange.png");
+        } else if (this.soc < LOW_CHARGE && this.soc >= 0) {
+          // Marker icon for a situation where the vehicle charge is in the low range
+          iconUrl = require("@/assets/img/marker-red.png");
+        }
       }
       return icon({
         iconUrl: iconUrl,
