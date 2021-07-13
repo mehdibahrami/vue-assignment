@@ -98,11 +98,11 @@ exports[`Dashboard renders correctly 1`] = `
   if (this.data.y) {
     if (this.data.y <= _constants.SPEED_LIMIT) {
       this.$refs.chart.updateOptions({
-        colors: [\\"#7ca363\\"]
+        colors: [_export.default.green]
       });
     } else {
       this.$refs.chart.updateOptions({
-        colors: [\\"#AD6D6D\\"]
+        colors: [_export.default.red]
       });
     }
   }
@@ -125,15 +125,15 @@ exports[`Dashboard renders correctly 1`] = `
   if (this.data.y) {
     if (this.data.y >= _constants.MID_CHARGE) {
       this.$refs.chart.updateOptions({
-        colors: [\\"#7ca363\\"]
+        colors: [_export.default.green]
       });
     } else if (this.data.y < _constants.MID_CHARGE && this.data.y >= _constants.LOW_CHARGE) {
       this.$refs.chart.updateOptions({
-        colors: [\\"#C38540\\"]
+        colors: [_export.default.orange]
       });
     } else {
       this.$refs.chart.updateOptions({
-        colors: [\\"#AD6D6D\\"]
+        colors: [_export.default.red]
       });
     }
   }
