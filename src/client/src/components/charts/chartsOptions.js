@@ -8,6 +8,8 @@ import {
   MIN_SPEED,
 } from "@/constants";
 
+import styles from "@/assets/scss/_export.scss";
+
 // Default gauge chart options
 const defaultGaugeChart = {
   plotOptions: {
@@ -24,12 +26,12 @@ const defaultGaugeChart = {
       dataLabels: {
         name: {
           offsetY: 25,
-          color: "#6b7280",
+          color: styles.gray,
           show: true,
         },
         value: {
           offsetY: -10,
-          color: "#8a63a3",
+          color: styles.purple,
           fontSize: "2rem",
           formatter(val) {
             return `${parseFloat(val)}`;
@@ -52,9 +54,9 @@ export const speedGaugeChartOptions = {
     colors: [
       function ({ value }) {
         if (value <= SPEED_LIMIT) {
-          return "#7ca363";
+          return styles.green;
         } else {
-          return "#AD6D6D";
+          return styles.red;
         }
       },
     ],
@@ -70,11 +72,11 @@ export const socGaugeChartOptions = {
     colors: [
       function ({ value }) {
         if (value <= LOW_CHARGE) {
-          return "#AD6D6D";
+          return styles.red;
         } else if (value > LOW_CHARGE && value <= MID_CHARGE) {
-          return "#C38540";
+          return styles.orange;
         } else {
-          return "#7ca363";
+          return styles.green;
         }
       },
     ],
@@ -115,7 +117,7 @@ export const speedLineChartOptions = {
       },
     },
   },
-  colors: ["#7ca363"],
+  colors: [styles.green],
   xaxis: {
     tickAmount: 5,
     range: 600000,
@@ -164,11 +166,11 @@ export function setSpeedLineChartColor() {
   if (this.data.y) {
     if (this.data.y <= SPEED_LIMIT) {
       this.$refs.chart.updateOptions({
-        colors: ["#7ca363"],
+        colors: [styles.green],
       });
     } else {
       this.$refs.chart.updateOptions({
-        colors: ["#AD6D6D"],
+        colors: [styles.red],
       });
     }
   }
@@ -196,7 +198,7 @@ export const socLineChartOptions = {
       },
     },
   },
-  colors: ["#7ca363"],
+  colors: [styles.green],
   xaxis: {
     tickAmount: 5,
     range: 600000,
@@ -247,15 +249,15 @@ export function setSocLineChartColor() {
   if (this.data.y) {
     if (this.data.y >= MID_CHARGE) {
       this.$refs.chart.updateOptions({
-        colors: ["#7ca363"],
+        colors: [styles.green],
       });
     } else if (this.data.y < MID_CHARGE && this.data.y >= LOW_CHARGE) {
       this.$refs.chart.updateOptions({
-        colors: ["#C38540"],
+        colors: [styles.orange],
       });
     } else {
       this.$refs.chart.updateOptions({
-        colors: ["#AD6D6D"],
+        colors: [styles.red],
       });
     }
   }
