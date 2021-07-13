@@ -161,21 +161,6 @@ export const speedLineChartOptions = {
   },
 };
 
-// Speed line chart set color function
-export function setSpeedLineChartColor() {
-  if (this.data.y) {
-    if (this.data.y <= SPEED_LIMIT) {
-      this.$refs.chart.updateOptions({
-        colors: [styles.green],
-      });
-    } else {
-      this.$refs.chart.updateOptions({
-        colors: [styles.red],
-      });
-    }
-  }
-}
-
 // SoC line chart options
 export const socLineChartOptions = {
   ...defaultLineChart,
@@ -243,22 +228,3 @@ export const socLineChartOptions = {
     },
   },
 };
-
-// SoC line chart set color function
-export function setSocLineChartColor() {
-  if (this.data.y) {
-    if (this.data.y >= MID_CHARGE) {
-      this.$refs.chart.updateOptions({
-        colors: [styles.green],
-      });
-    } else if (this.data.y < MID_CHARGE && this.data.y >= LOW_CHARGE) {
-      this.$refs.chart.updateOptions({
-        colors: [styles.orange],
-      });
-    } else {
-      this.$refs.chart.updateOptions({
-        colors: [styles.red],
-      });
-    }
-  }
-}

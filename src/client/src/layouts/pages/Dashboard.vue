@@ -55,7 +55,7 @@
             :data="{ x: data.time, y: data.speed }"
             :options="speedLineChartOptions"
             :interval="speedLineChartInterval"
-            :setColor="setSpeedLineChartColor"
+            :color="chartColors.speedLineChartColor"
           />
         </Card>
         <!-- Right column - SoC line chart -->
@@ -65,8 +65,8 @@
             :title="chartTitles.socLineChart"
             :data="{ x: data.time, y: data.soc }"
             :options="socLineChartOptions"
-            :interval="speedLineChartInterval"
-            :setColor="setSocLineChartColor"
+            :interval="socLineChartInterval"
+            :color="chartColors.socLineChartColor"
           />
         </Card>
       </div>
@@ -99,15 +99,17 @@ import {
 import {
   SPEED_LINE_CHART_INTERVAL,
   SOC_LINE_CHART_INTERVAL,
+  SPEED_LIMIT,
+  MID_CHARGE,
+  LOW_CHARGE,
 } from "@/constants";
 import {
   speedGaugeChartOptions,
   socGaugeChartOptions,
   speedLineChartOptions,
-  setSpeedLineChartColor,
   socLineChartOptions,
-  setSocLineChartColor,
 } from "@/components/charts/chartsOptions.js";
+import styles from "@/assets/scss/_export.scss";
 
 export default {
   name: "Dashboard",
@@ -127,9 +129,7 @@ export default {
       speedGaugeChartOptions,
       socGaugeChartOptions,
       speedLineChartOptions,
-      setSpeedLineChartColor,
       socLineChartOptions,
-      setSocLineChartColor,
       speedLineChartInterval: SPEED_LINE_CHART_INTERVAL,
       socLineChartInterval: SOC_LINE_CHART_INTERVAL,
       cardTitles: {
@@ -149,6 +149,10 @@ export default {
       cardUnits: {
         energyStatisticsCard: "kW",
         odometerStatisticsCard: "km",
+      },
+      chartColors: {
+        speedLineChartColor: styles.gray,
+        socLineChartColor: styles.gray,
       },
       chartTypes: {
         socLineChart: "area",
@@ -204,6 +208,22 @@ export default {
             };
           }
         });
+      }
+      if (this.data.speed) {
+        if (this.data.speed <= SPEED_LIMIT) {
+          this.chartColors.speedLineChartColor = styles.green;
+        } else {
+          this.chartColors.speedLineChartColor = styles.red;
+        }
+      }
+      if (this.data.soc) {
+        if (this.data.soc >= MID_CHARGE) {
+          this.chartColors.socLineChartColor = styles.green;
+        } else if (this.data.soc < MID_CHARGE && this.data.soc >= LOW_CHARGE) {
+          this.chartColors.socLineChartColor = styles.orange;
+        } else {
+          this.chartColors.socLineChartColor = styles.red;
+        }
       }
     },
   },

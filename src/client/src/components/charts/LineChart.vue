@@ -36,8 +36,8 @@ export default {
       type: String,
       default: "line",
     },
-    setColor: {
-      type: Function,
+    color: {
+      type: String,
     },
   },
   data() {
@@ -76,7 +76,7 @@ export default {
           this.updateChart();
 
           // Set chart color based on current value
-          if (this.setColor) this.setColor();
+          if (this.color) this.updateChartColor();
         }
       }, this.interval);
     },
@@ -87,6 +87,11 @@ export default {
           data: this.series[0].data,
         },
       ]);
+    },
+    updateChartColor: function () {
+      this.$refs.chart.updateOptions({
+        colors: [this.color],
+      });
     },
     freeMemory: function () {
       setInterval(() => {

@@ -94,19 +94,6 @@ exports[`Dashboard renders correctly 1`] = `
           data="[object Object]"
           interval="100"
           options="[object Object]"
-          setcolor="function setSpeedLineChartColor() {
-  if (this.data.y) {
-    if (this.data.y <= _constants.SPEED_LIMIT) {
-      this.$refs.chart.updateOptions({
-        colors: [_export.default.green]
-      });
-    } else {
-      this.$refs.chart.updateOptions({
-        colors: [_export.default.red]
-      });
-    }
-  }
-}"
           title="Speed"
         />
         
@@ -121,23 +108,6 @@ exports[`Dashboard renders correctly 1`] = `
           data="[object Object]"
           interval="100"
           options="[object Object]"
-          setcolor="function setSocLineChartColor() {
-  if (this.data.y) {
-    if (this.data.y >= _constants.MID_CHARGE) {
-      this.$refs.chart.updateOptions({
-        colors: [_export.default.green]
-      });
-    } else if (this.data.y < _constants.MID_CHARGE && this.data.y >= _constants.LOW_CHARGE) {
-      this.$refs.chart.updateOptions({
-        colors: [_export.default.orange]
-      });
-    } else {
-      this.$refs.chart.updateOptions({
-        colors: [_export.default.red]
-      });
-    }
-  }
-}"
           title="SoC"
           type="area"
         />
